@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-RealEstate::Application.config.secret_key_base = 'dbc555e1eb5e053faa451867f6d5284d41ea48d905c9055dd09d9c08a2fa8d62faebb9484552bd3cd5d2879d1792222878d6712b160d5021d02dc581bd91787b'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+RealEstate::Application.config.secret_key_base = secure_token
