@@ -1,4 +1,5 @@
 RealEstate::Application.routes.draw do
+  get "users/new"
   root "static_pages#home"
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/listings', to: 'static_pages#listings', via: 'get'
