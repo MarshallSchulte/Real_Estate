@@ -1,0 +1,38 @@
+<input type="hidden" id="galleryID" value="<%= @gallery.id %>">
+<input type="hidden" id="gallery_id" value="<%= @gallery.id %>">
+<%= form_for [@listing, @gallery, @picture], :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :gallery_id, :value => @picture.gallery_id %>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+  
+    <%= image_tag @picture.image.large.url, :id => 'cropbox' %>
+  
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary  btn-mini' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                gallery_path(@gallery), :class => 'btn btn-mini' %>
+    <%= link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'%>
+
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+      $('#make_default').click(function(event) {
+        event.preventDefault();
+        $.ajax({
+          url: '<%= make_default_listing_gallery_pictures_path %>',
+          type: 'PATCH',
+          data: {id : <%= @picture.id %>, gallery_id : <%= @gallery.id %>}
+        });
+      });
+    });
+</script>

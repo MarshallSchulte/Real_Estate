@@ -1,0 +1,40 @@
+
+	<div class="col-sm-6 col-md-4">
+		<li class="span3" id="listing_<%= listing.address %>">
+		<div class="thumbnail">
+            <% if listing.cover.blank? or !Picture.find_by_id(listing.cover) %>
+              <a href="<%= listing_path(:id => listing.id) %>">
+                <img src="/assets/NoImageAvailable.jpg" alt="">
+              </a>
+            <% else %>
+              <a href="<%= listing_path(:id => listing.id) %>">
+                <img src="<%= Picture.find_by_id(listing.cover).image.thumb.url %>" alt="">
+              </a>
+            <% end %>
+		<span class="count"><%= pluralize(listing.gallery.pictures.count, "photo") %></span>
+		<span class="address"><h4><%= listing.address %></h4></span>
+          <div class="thumbnail">
+            <div class="caption">
+              <p style="text-align: center;">
+			    <span class="price">$<%= number_with_delimiter(listing.price) %></span></br>
+			    <span class="beds"><%= pluralize(listing.beds, "bedroom") %></span></br>
+				<span class="bathrooms"><%= pluralize(listing.bathrooms, "bathroom") %></span></br>
+				<span class="sqft"><%= number_with_delimiter(listing.sqft) %> square feet</span></br></br>
+				<span class="timestamp"><%= time_ago_in_words(listing.created_at) %> ago.</span></br>
+			  <% if signed_in? %>
+			  <span class="buttons">
+                <a href="<%= edit_listing_path(:id => listing.id) %>" class="btn btn-mini btn-warning">
+                  <i class="glyphicon glyphicon-edit "></i>
+                  Edit
+                </a>
+                <a class="btn btn-mini btn-danger btn-delete" confirm="Are you sure?" data-method="delete" href="<%= listing_path(:id => listing.id) %>" data-remote=true>
+                  <i class="glyphicon glyphicon-trash"></i>
+                  Delete
+                </a>
+			  </span>
+			  <% end %>
+              </p>
+            </div>
+          </div>
+        </li>
+	</div>

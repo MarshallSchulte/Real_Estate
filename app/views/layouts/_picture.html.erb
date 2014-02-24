@@ -1,0 +1,21 @@
+
+            <li class="span3" id="picture_<%= picture.id %>">
+              <div class="thumbnail">
+                <a href="<%= picture.image.url %>" rel="gallery" class="picture" title="<%= picture.description %>">
+                  <img src="<%= picture.image.thumb.url %>" alt="">
+                </a>
+                <div class="caption">
+				
+                  <p style="text-align: center;">
+                    <a href="/listings/<%= listing.id %>/galleries/<%= listing.gallery.id %>/pictures/<%= picture.id %>/edit" class="btn btn-warning btn-show">
+                      <i class="glyphicon glyphicon-edit"></i>
+                      Edit
+                    </a>
+                    <a class="btn btn-danger btn-delete" data: { confirm: "Are you sure?" } data-method="delete" href="/listings/<%= listing.id %>/galleries/<%= listing.gallery.id %>/pictures/<%= picture.id %>" data-remote=true>
+                      <i class="glyphicon glyphicon-trash"></i>
+                      Delete
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </li>

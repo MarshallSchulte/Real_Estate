@@ -1,12 +1,24 @@
 RealEstate::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  root "static_pages#home"
+
+  resources :listings do
+    resources :galleries do
+      resources :pictures do
+        collection do
+          patch 'make_default'
+        end
+      end
+    end
+  end
+  resources :galleries
+  resources :pictures
+  root "listings#index"
   match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/listings', to: 'static_pages#listings', via: 'get'
+  #match '/listings', to: 'listings#show',       via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin', to: 'sessions#new',          via: 'get'
-  match '/signout', to: 'sessions#destroy',       via: 'delete'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

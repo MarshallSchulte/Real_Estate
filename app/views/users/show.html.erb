@@ -8,4 +8,15 @@
       </h1>
     </section>
   </aside>
+
+<div class="span-8">
+      <h3>Listings (<%= @user.listings.count %>) <%= link_to "Make a Listing", new_listing_path, class: "btn btn-large btn-primary" %></h3>
+	  
+      <ol class="listings">
+        <%= render @listings %>
+      </ol>
+      <%= will_paginate @listings %>
 </div>
+</div>
+
+

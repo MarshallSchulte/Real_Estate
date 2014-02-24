@@ -1,0 +1,45 @@
+          <% unless picture.id.nil? %>
+            <li class="span3" id="picture_<%= picture.id %>">
+              <div class="thumbnail">
+                <a href="<%= picture.image.url %>" rel="gallery" class="picture" title="<%= picture.description %>">
+                  <img src="<%= picture.image.thumb.url %>" alt="">
+                </a>
+                <div class="caption">
+				
+                  <p style="text-align: center;">
+				   <a class="btn btn-mini btn-success" id="make_default_<%= picture.id %>"%>
+				     <i class="glyphicon glyphicon-chevron-up"></i>
+					   Default
+				   </a>
+                    <a href="/listings/<%= @listing.id %>/galleries/<%= @listing.gallery.id %>/pictures/<%= picture.id %>/edit" class="btn btn-mini btn-warning">
+                      <i class="glyphicon glyphicon-edit"></i>
+                      Edit
+                    </a>
+                    <a class="btn btn-mini btn-danger" data: { confirm: "Are you sure?" } data-method="delete" href="/listings/<%= @listing.id %>/galleries/<%= @listing.gallery.id %>/pictures/<%= picture.id %>" data-remote=true>
+                      <i class="glyphicon glyphicon-trash"></i>
+                      Delete
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </li>
+<script type="text/javascript" charset="utf-8">
+	
+	$(function () {
+      $("#make_default_<%= picture.id %>").click(function(event) {
+        event.preventDefault();
+        $.ajax({	  
+          url: '<%= make_default_listing_gallery_pictures_path(@listing, @gallery, @picture) %>',
+          type: 'PATCH',
+		  data: {id : <%= picture.id %>, gallery_id : <%= @listing.gallery.id %>, listing_id : <%= @listing.id %>},
+		  success: ''
+        });
+		$("#cover").fadeOut( function() {
+		  $(this).load( "<%= @listing.id %> #coverimg", function() {
+		    $(this).fadeIn();	  
+		  });
+		});	
+      });
+    });
+</script>
+		  <% end %>

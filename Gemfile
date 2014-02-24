@@ -6,6 +6,15 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
+gem 'rmagick'
+gem 'carrierwave'
+gem 'fancybox-rails'
+gem "jquery-fileupload-rails"
+gem 'blueimp-gallery-rails'
+gem 'bootstrap-glyphicons'
+gem 'twitter-bootstrap-rails' , :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'fog'
+gem 'thin'
 
 
 group :development, :test do

@@ -1,0 +1,147 @@
+
+
+  
+<input type="hidden" id="galleryID" value="<%= @listing.gallery.id %>">
+<input type="hidden" id="listing_id" value="<%= @listing.id %>">
+<p><h1><%= @listing.address %></h1></p>
+	
+  <div class="row">
+  
+	<h3>$ <%= number_with_delimiter(@listing.price) %></h3>
+  
+	<p><%= @listing.addinfo %></p>
+
+
+  <table id="listing_att">
+	<tbody>
+		<tr>
+			<td>Type: </td>
+			<td><%= @listing.category %></td>
+			<td>Bedrooms: </td>
+			<td><%= @listing.beds %></td>
+		</tr>
+		<tr>
+			<td>Bathrooms </td>
+			<td><%= @listing.bathrooms %></td>
+			<td>Building Size: </td>
+			<td><%= @listing.sqft %></td>
+		</tr>
+		<tr>
+			<td>Lot Size: </td>
+			<td><%= @listing.lotsize %></td>
+			<td>Year built: </td>
+			<td><%= @listing.yearbuilt %></td>
+		</tr>
+		<tr>
+			<td>Floors: </td>
+			<td><%= @listing.floors %></td>
+			<td>Occupied?</td>
+			<td><%= @listing.occupied %></td>
+		</tr>
+		<tr>
+			<td>Basement? </td>
+			<td><%= @listing.basement %></td>
+			<td>Garage?</td>
+			<td><%= @listing.garage %></td>
+		</tr>
+		<tr>
+			<td>Air Conditioning? </td>
+			<td><%= @listing.ac %></td>
+			<td>County</td>
+			<td><%= @listing.county %></td>
+		</tr>
+		<tr>
+			<td>Subdivision </td>
+			<td><%= @listing.subdivision %></td>
+		</tr>
+  
+	</tbody>
+	<div id="coverdiv">
+      <% if @listing.cover.blank? or !Picture.find_by_id(@listing.cover) %>
+	
+              <a href="<%= listing_path(:id => @listing.id) %>"  id="cover">
+                <img src="/assets/NoImageAvailable.jpg" id="coverimg" alt="">
+              </a>
+			  
+            <% else %>
+			
+              <a href="<%= Picture.find_by_id(@listing.cover).image.url %>" rel="gallery" class="picture"  id="cover">
+                <img src="<%= Picture.find_by_id(@listing.cover).image.thumb.url %>" id="coverimg" alt="">
+              </a>
+			  
+      <% end %>
+	</div>
+  </table>
+  
+  
+	</div>
+<% if signed_in? %>
+  <h2>Pictures</h2>
+
+<%= form_for [@listing, @listing.gallery, @gallery.pictures.build], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+  <input type="hidden" id="listing_id" value="<%= @listing.id %>">
+  <div class="row">
+    <div class=" fileupload-buttonbar">
+      <div class="progressbar fileupload-progressbar nofade"><div style="width:0%;"></div></div>
+      <span class="btn btn-primary fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span><%= t('photos.add_files') %>...</span>
+        <%= f.file_field :image, :multiple => true %>
+      </span>
+    </div>
+  </div>
+  </br>
+  <div class="row">
+
+    <ul class="thumbnails files">
+       <%= render @listing.gallery.pictures %>
+	</ul>
+
+  </div>
+<% end %>
+
+<script>
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+</script>
+
+<script id="template-download" type="text/html">
+  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
+  <tr class="template-download nofade">
+    {% if (file.error) { %}
+    <td></td>
+    <td class="name">{%=file.name%}</td>
+    <td class="size">{%=o.formatFileSize(file.size)%}</td>
+    <td class="error" colspan="2"><span class="label important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
+    {% } else { %}
+    <td class="preview">{% if (file.thumbnail_url) { %}
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.thumbnail_url%}"></a>
+    {% } %}</td>
+    <td class="name">
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}">{%=file.name%}</a>
+    </td>
+    <td class="size">{%=o.formatFileSize(file.size)%}</td>
+    <td colspan="2"></td>
+    {% } %}
+    <td class="delete">
+    <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"><%= t('photos.template.delete') %></button>
+    <input type="checkbox" name="delete" value="1">
+    </td>
+  </tr>
+  {% } %}
+</script>
+
+<div class="row">
+  <div class="form-actions">
+    <%= link_to 'Back', listings_path, :class => 'btn'  %>
+    <%= link_to 'Edit', edit_listing_path(@listing), :class => 'btn btn-warning' %>
+    <%= link_to 'Delete', listing_path(@listing), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  </div>
+</div>
+<% end %>

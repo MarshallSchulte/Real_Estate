@@ -1,0 +1,28 @@
+<div class="row">
+    <ul class="thumbnails files">
+      <% unless @gallery.pictures.empty? %>
+        <% @gallery.pictures.each do |pic| %>
+            <li class="span3" id="picture_<%= pic.id %>">
+              <div class="thumbnail">
+                <a href="<%= pic.image.url %>" rel="gallery" class="picture" title="<%= pic.description %>">
+                  <img src="<%= pic.image.thumb.url %>" alt="">
+                </a>
+                <div class="caption">
+				
+                  <p style="text-align: center;">
+                    <a href="/listings/<%= @listing.id %>/galleries/<%= @listing.gallery.id %>/pictures/<%= pic.id %>/edit" class="btn btn-warning btn-show">
+                      <i class="glyphicon glyphicon-edit"></i>
+                      Edit
+                    </a>
+                    <a class="btn btn-danger btn-delete" data: { confirm: "Are you sure?" } data-method="delete" href="/listings/<%= @listing.id %>/galleries/<%= @listing.gallery.id %>/pictures/<%= pic.id %>" data-remote=true>
+                      <i class="glyphicon glyphicon-trash"></i>
+                      Delete
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </li>
+		<% end %>
+      <% end %>
+    </ul>
+  </div>

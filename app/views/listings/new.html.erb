@@ -1,0 +1,138 @@
+<% provide(:title, "Create Listing") %>
+<h1>Create a Listing</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@listing) do |p| %>
+	  <%= p.hidden_field :token %>
+	
+	  <%= p.label "Type" %>
+	  <%= p.text_field :category %>
+	
+	  <%= p.label :address %>
+	  <%= p.text_field :address %>
+	  
+	  <%= p.label "Price (numbers only)" %>
+	  <%= p.text_field :price %>
+	  
+	  <%= p.label "Bedrooms (numbers only)" %>
+	  <%= p.text_field :beds %>
+	  
+	  <%= p.label "Bathrooms (numbers only)" %>
+	  <%= p.text_field :bathrooms %>
+	  
+	  <%= p.label "Building Size (numbers only)" %>
+	  <%= p.text_field :sqft %>
+	  
+	  <%= p.label "Lot Size (numbers only)" %>
+	  <%= p.text_field :lotsize %>
+	  
+      <%= p.label "Year Built (numbers only)" %>
+	  <%= p.text_field :yearbuilt %>
+	  
+	  <%= p.label "Floors (numbers only)" %>
+	  <%= p.text_field :floors %>
+	  
+	  <%= p.label "Occupied?"%>
+	  <%= p.text_field :occupied %>
+	  
+	  <%= p.label "Basement?" %>
+	  <%= p.text_field :basement %>
+	  
+	  <%= p.label "Garage?" %>
+	  <%= p.text_field :garage %>
+	  
+	  <%= p.label "Pool?" %>
+	  <%= p.text_field :pool %>
+	  
+	  <%= p.label "Fireplace?" %>
+	  <%= p.text_field :fireplace %>
+	  
+	  <%= p.label "Backyard?" %>
+	  <%= p.text_field :backyard %>
+	  
+	  <%= p.label "Air Conditioning?" %>
+	  <%= p.text_field :ac %>
+	  
+	  <%= p.label "County" %>
+	  <%= p.text_field :county %>
+	  
+	  <%= p.label "Subdivision" %>
+	  <%= p.text_field :subdivision %>
+	  
+	  <%= p.label "Description" %>
+	  <%= p.text_area :addinfo, :cols => 10, :rows => 10 %>
+	  
+	  <input type="hidden" id="listing_id" value="<%= @listing.id %>">
+	  
+	  
+  <%= fields_for :gallery, @listing.gallery  do |g| %>
+	<%= g.hidden_field :listing_token, value: @listing.token %>
+	
+  <% end %>
+<%= p.submit class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+</div>
+
+
+
+<%= form_for @picture, :html => { :multipart => true, :id => "fileupload" } do |f| %>
+	<div class="row">
+		<%= f.hidden_field :listing_token, :value => @listing.token %>
+			
+        <h3 style="text-align:center">Pictures</h3>
+		  <br>
+		<div class=" fileupload-buttonbar">
+			<div class="progressbar fileupload-progressbar nofade"><div style="width:0%;"></div></div>
+				<span class="btn btn-success fileinput-button">
+					<i class="glyphicon glyphicon-plus"></i>
+					<span><%= t('photos.add_files') %>...</span>
+					<%= f.file_field :image, :multiple => true %>
+				</span>
+			</div>
+		</div>
+
+		  </br>
+		  </br>
+		  <div class="row">
+			<ul class="thumbnails files">
+			</ul>
+		  </div>
+	<% end %>
+<script>
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+</script>
+
+<script id="template-download" type="text/html">
+  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
+  <tr class="template-download nofade">
+    {% if (file.error) { %}
+    <td></td>
+    <td class="name">{%=file.name%}</td>
+    <td class="size">{%=o.formatFileSize(file.size)%}</td>
+    <td class="error" colspan="2"><span class="label important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
+    {% } else { %}
+    <td class="preview">{% if (file.thumbnail_url) { %}
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.thumbnail_url%}"></a>
+    {% } %}</td>
+    <td class="name">
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}">{%=file.name%}</a>
+    </td>
+    <td class="size">{%=o.formatFileSize(file.size)%}</td>
+    <td colspan="2"></td>
+    {% } %}
+    <td class="delete">
+    <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"><%= t('photos.template.delete') %></button>
+    <input type="checkbox" name="delete" value="1">
+    </td>
+  </tr>
+  {% } %}
+</script>
