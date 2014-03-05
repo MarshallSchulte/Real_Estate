@@ -1,15 +1,15 @@
 
-	<div class="row-fluid" style="margin:0px 0px 20px 0px; border-style: solid; border-width: 4px 4px 4px 4px; border-color: #ed3d7b; box-shadow: 0px 10px 0px rgba(174, 115, 136, 0.5); width: 49.4%; background-color: #ffe2a9; float: left;" >
+	<div class="row-fluid" style="min-width: 708px; height: auto; margin:0px 0px 20px 0px; border-style: solid; border-width: 4px 4px 4px 4px; border-color: #ed3d7b; box-shadow: 0px 10px 0px rgba(174, 115, 136, 0.5); width: 49.4%; background-color: #ffe2a9; float: left;" >
 		<div class="row">
 		  <div class="col-md-2" style="float: left; border-style: solid; border-width: 0px 4px 4px 0px; border-color: #ed3d7b; ">
             <% if listing.cover.blank? or !Picture.find_by_id(listing.cover) %>
               <a href="<%= listing_path(:id => listing.id) %>">
-                <img src="/assets/NoImageAvailable.jpg" alt="">
+                <img src="/assets/NoImageAvailable.jpg" class="img-responsive" alt="">
               </a>
             <% else %>
 			  <figure>
               <a href="<%= listing_path(:id => listing.id) %>" style="display: block;, position: relative;">
-                <img src="<%= Picture.find_by_id(listing.cover).image.preview.url %>" style="" alt="">
+                <img src="<%= Picture.find_by_id(listing.cover).image.preview.url %>" class="img-responsive" style="" alt="">
 				<figcaption><%= pluralize(listing.gallery.pictures.count, "photo") %> </figcaption>
               </a>
 			  </figure>
