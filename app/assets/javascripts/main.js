@@ -14,14 +14,16 @@
 
 $(document).ready(function () {
 
-  $(".container").hide().fadeIn(350);
+  $(".row").hide().fadeIn(350);
   
-  $(".container").blur( function() {
+  $("img").hide().fadeIn(350);
+  
+  $(".row").blur( function() {
     $(this).fadeOut(350);
 	});
     
 
-  $('a.picture').attr('rel', 'gallery').fancybox();
+  $('a.picture').fancybox();
   
   /*$('a.btn-show').fancybox();*/
 

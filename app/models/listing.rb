@@ -4,6 +4,9 @@ class Listing < ActiveRecord::Base
   #validates :user_id, presence: true
   default_scope -> { order('created_at DESC') }
   
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+  
   def generate_token
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64

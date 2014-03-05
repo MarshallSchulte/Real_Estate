@@ -15,6 +15,9 @@ gem 'bootstrap-glyphicons'
 gem 'twitter-bootstrap-rails' , :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'fog'
 gem 'thin'
+gem 'jquery-ui-rails'
+gem 'geocoder'
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 
 
 group :development, :test do

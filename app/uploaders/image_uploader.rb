@@ -27,15 +27,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :large do
     process :crop
   end
+  
+  version :medium do
+    process :crop
+    resize_to_fill(412, 309)
+  end
 
   version :preview do
     process :crop
-    resize_to_limit(690, 518)
+    resize_to_fill(200, 150)
   end
   
   version :thumb do
     process :crop
-    resize_to_fill(200, 150)
+    resize_to_fill(100, 75)
   end
   
   def crop

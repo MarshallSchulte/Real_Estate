@@ -2,7 +2,8 @@ class ListingsController < ApplicationController
 before_action :signed_in_user, only: [:create, :update, :destroy]
 
 def index
-    @listings = Listing.all
+	@q = Listing.search(params[:q])
+    @listings = @q.result(distinct: true)
 Rails.logger.debug("[debug] : L 1" );
     respond_to do |format|
       format.html # index.html.erb

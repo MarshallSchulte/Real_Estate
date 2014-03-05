@@ -1,40 +1,101 @@
 
-	<div class="col-sm-6 col-md-4">
-		<li class="span3" id="listing_<%= listing.address %>">
-		<div class="thumbnail">
+	<div class="row-fluid" style="margin:0px 0px 20px 0px; border-style: solid; border-width: 4px 4px 4px 4px; border-color: #ed3d7b; box-shadow: 0px 10px 0px rgba(174, 115, 136, 0.5); width: 49.4%; background-color: #ffe2a9; float: left;" >
+		<div class="row">
+		  <div class="col-md-2" style="float: left; border-style: solid; border-width: 0px 4px 4px 0px; border-color: #ed3d7b; ">
             <% if listing.cover.blank? or !Picture.find_by_id(listing.cover) %>
               <a href="<%= listing_path(:id => listing.id) %>">
                 <img src="/assets/NoImageAvailable.jpg" alt="">
               </a>
             <% else %>
-              <a href="<%= listing_path(:id => listing.id) %>">
-                <img src="<%= Picture.find_by_id(listing.cover).image.thumb.url %>" alt="">
+			  <figure>
+              <a href="<%= listing_path(:id => listing.id) %>" style="display: block;, position: relative;">
+                <img src="<%= Picture.find_by_id(listing.cover).image.preview.url %>" style="" alt="">
+				<figcaption><%= pluralize(listing.gallery.pictures.count, "photo") %> </figcaption>
               </a>
+			  </figure>
             <% end %>
-		<span class="count"><%= pluralize(listing.gallery.pictures.count, "photo") %></span>
-		<span class="address"><h4><%= listing.address %></h4></span>
-          <div class="thumbnail">
-            <div class="caption">
-              <p style="text-align: center;">
-			    <span class="price">$<%= number_with_delimiter(listing.price) %></span></br>
-			    <span class="beds"><%= pluralize(listing.beds, "bedroom") %></span></br>
-				<span class="bathrooms"><%= pluralize(listing.bathrooms, "bathroom") %></span></br>
-				<span class="sqft"><%= number_with_delimiter(listing.sqft) %> square feet</span></br></br>
-				<span class="timestamp"><%= time_ago_in_words(listing.created_at) %> ago.</span></br>
-			  <% if signed_in? %>
-			  <span class="buttons">
-                <a href="<%= edit_listing_path(:id => listing.id) %>" class="btn btn-mini btn-warning">
-                  <i class="glyphicon glyphicon-edit "></i>
-                  Edit
-                </a>
-                <a class="btn btn-mini btn-danger btn-delete" confirm="Are you sure?" data-method="delete" href="<%= listing_path(:id => listing.id) %>" data-remote=true>
-                  <i class="glyphicon glyphicon-trash"></i>
-                  Delete
-                </a>
-			  </span>
+			
+		  </div>
+		  
+		  <div class="col-md-5" style="overflow: hidden;">
+			<div class="row" style="vertical-align: top; clear: none; border-style: solid; border-width: 0px 0px 8px 0px; border-color: #ed3d7b">
+				<span class="address"><h3 style="text-align: center; margin-left 40px; color: #ed3d7b; font-weight: bold;"><%= listing.address %></h1></span>
+			
+			</div>
+
+		  <div class="col-md-2" style="line-height: 1; margin-left: 5%; margin-top: 10px; color: #ed3d7b; font-weight: 100; font-size: 1.3em; float: left;">
+			<span class="category" style="margin-left: -5%; font-size: 1.2em;"><%= listing.category %></span></br>
+			<span class="price" style="font-size: 1.7em; ">$<%= number_with_delimiter(listing.price) %></span></br>
+			<span class="bedrooms"><%= pluralize(listing.beds, "bedroom") %></span></br>
+			<span class="bathrooms"><%= pluralize(listing.bathrooms, "bathroom") %></span>
+		  </div>
+		  
+		  <div class="col-md-3" style="line-height: 1; margin-left: 10%; margin-top: 5%; color: #ed3d7b; font-weight: 100; font-size: 1.3em; float: left;">
+		    <span class="buildingsize"><%= number_with_delimiter(listing.sqft) %> sqft</span></br>
+			<span class="lotsize"><%= number_with_delimiter(listing.lotsize) %> ac.lot</span></br>
+			<span class="yearbuilt">Built in <%= listing.yearbuilt %></span></br>
+			<span style="text-align: center; color: #6caba4; font-weight: 100;"><%= time_ago_in_words(listing.created_at) %> ago.</span>
+			    <% if signed_in? %>
+			    <span class="buttons">
+                  <a href="<%= edit_listing_path(:id => listing.id) %>" class="btn btn-mini btn-warning">
+                    <i class="glyphicon glyphicon-edit "></i>
+                    Edit
+                  </a>
+                  <a class="btn btn-mini btn-danger btn-delete" confirm="Are you sure?" data-method="delete" href="<%= listing_path(:id => listing.id) %>" data-remote=true>
+                    <i class="glyphicon glyphicon-trash"></i>
+                    Delete
+                  </a>
+			    </span>
+			
 			  <% end %>
-              </p>
-            </div>
-          </div>
-        </li>
+		  </div>
+			<!--<table id="listing_att" style=" letter-spacing: 2px; margin-left: 30px; margin-top: 20px; margin-bottom: 20px; color: #ed3d7b; font-weight: 100; font-size: 1.3em; line-height: 1;">
+				<tbody>
+					<tr>
+						<td>Type: </td>
+						<td><%= listing.category %></td>
+						<td>Bedrooms: </td>
+						<td><%= listing.beds %></td>
+					</tr>
+					<tr>
+						<td>Bathrooms </td>
+						<td><%= listing.bathrooms %></td>
+						<td>Building Size: </td>
+						<td><%= number_with_delimiter(listing.sqft) %></td>
+					</tr>
+					<tr>
+						<td>Lot Size: </td>
+						<td><%= number_with_delimiter(listing.lotsize) %></td>
+						<td>Year built: </td>
+						<td><%= listing.yearbuilt %></td>
+					</tr>
+					<tr>
+						<td>Floors: </td>
+						<td><%= listing.floors %></td>
+						<td>Occupied?</td>
+						<td><%= listing.occupied %></td>
+					</tr>
+					<tr>
+						<td>Basement? </td>
+						<td><%= listing.basement %></td>
+						<td>Garage?</td>
+						<td><%= listing.garage %></td>
+					</tr>
+					<tr>
+						<td>Air Conditioning? </td>
+						<td><%= listing.ac %></td>
+						<td>County</td>
+						<td><%= listing.county %></td>
+					</tr>
+					<tr>
+						<td>Subdivision </td>
+						<td><%= listing.subdivision %></td>
+						
+					</tr>
+			  
+				</tbody>
+			</table> -->
+			
+		</div>
+      </div>
 	</div>

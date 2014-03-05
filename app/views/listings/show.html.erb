@@ -3,18 +3,64 @@
   
 <input type="hidden" id="galleryID" value="<%= @listing.gallery.id %>">
 <input type="hidden" id="listing_id" value="<%= @listing.id %>">
-<p><h1><%= @listing.address %></h1></p>
+
 	
-  <div class="row">
+  <div class="row" style="box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); padding-bottom: 20px; margin-bottom: 20px; background-color: #ffe2a9; border-style: solid; border-color: #ed3d7b; border-width: 4px; margin-left: 20%; margin-right: 20%;">
+	<p><h1 style="border-style: solid; border-color: #ed3d7b; border-width: 0px 0px 8px 0px;"><%= @listing.address %></h1></p>
+	
   
-	<h3>$ <%= number_with_delimiter(@listing.price) %></h3>
-  
-	<p><%= @listing.addinfo %></p>
+	<div class="col-md-4" id="coverdiv" style="box-shadow: 10px 10px 0px rgba(0, 64, 64, 0.3); margin-left: 20px; background-color: #fc6b9e; border-style: solid; border-width: 4px 4px 4px 4px; border-color: #26f5fd; box-sizing: border-box; padding: 20px; float: left; max-width: 42%;">
+      <% if @listing.cover.blank? or !Picture.find_by_id(@listing.cover) %>
+	
+              <a href="<%= listing_path(:id => @listing.id) %>"  id="cover">
+                <img src="/assets/NoImageAvailable.jpg" id="coverimg" alt="">
+              </a>
+			  
+            <% else %>
+			
+              <a href="<%= Picture.find_by_id(@listing.cover).image.url %>" rel="gallery" class="picture"  id="cover">
+                <img src="<%= Picture.find_by_id(@listing.cover).image.medium.url %>" style="border-style: solid; border-width: 4px 4px 4px 4px; border-color: #26f5fd;" id="coverimg" alt="">
+              </a>
+			  
+      <% end %>
 
+		  <div id="picturegallery" style="float: left;">
+			<% @listing.gallery.pictures.each do |pic| %>
+			  <% unless pic.image.blank? || pic.id == @listing.cover %>
+				<a href="<%= pic.image.url %>" rel="gallery" class="picture" style="width: 100px;" id="cover">
+					<img src="<%= pic.image.thumb.url %>" style="margin: 2px 0px 2px 0px; width: 100px; border-style: solid; border-width: 1px 1px 1px 1px; border-color: #26f5fd;">
+				</a>
+			  <% end %>
+			<% end %>
+		  </div>
+	</div>
 
-  <table id="listing_att">
-	<tbody>
+    <div class="col-md-8" style="">
+	 <h2 style="border-style: solid; border-color: #ed3d7b; border-width: 0px 0px 2px 0px;text-align: center;"><%= @listing.category %> for $ <%= number_with_delimiter(@listing.price) %></h3>
+	 <div id="attributes1" style="background-color: #fee8bd; padding: 20px; box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); padding-bottom: 20px; margin-bottom: 20px; border-style: solid; border-color: #ed3d7b; border-width: 4px;margin-left: 50px; line-height: 1.3; font-size: 1.4em; float: left">
+		<span class="bedrooms"><%= pluralize(@listing.beds, "bedroom") %></span></br>
+		<span class="bathrooms"><%= pluralize(@listing.bathrooms, "bathroom") %></span></br>
+		<span class="buildingsize"><%= number_with_delimiter(@listing.sqft) %> sqft</span></br>
+		<span class="lotsize"><%= number_with_delimiter(@listing.lotsize) %> ac.lot</span></br>
+		<span class="yearbuilt">Built in <%= @listing.yearbuilt %></span></br>
+	 </div>
+	 
+	 <div id="attributes2" style="background-color: #fee8bd; padding: 20px; box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); padding-bottom: 20px; margin-bottom: 20px; border-style: solid; border-color: #ed3d7b; border-width: 4px;margin-right: 100px; line-height: 1.3; font-size: 1.4em; float: right">
+		<span class="floors"><%= pluralize(@listing.floors, "floor") %></span></br>
+		<span class="occupied">Occupied: <%= @listing.occupied %></span></br>
+		<span class="basement">Basement: <%= @listing.basement %></span></br>
+		<span class="garage">Garage: <%= @listing.garage %></span></br>
+		<span class="Air Conditioning">Air Conditioning: <%= @listing.ac %></span></br>
+	 </div>
+	 
+	 
+	 
+	 
+	 <!--<table id="listing_att" style="float: right; margin-left: 20px; line-height: 2; padding: 20px; font-weight: 100; font-size: 1.3em;">
+	  <tbody>
+	    
 		<tr>
+			
 			<td>Type: </td>
 			<td><%= @listing.category %></td>
 			<td>Bedrooms: </td>
@@ -55,32 +101,33 @@
 			<td><%= @listing.subdivision %></td>
 		</tr>
   
-	</tbody>
-	<div id="coverdiv">
-      <% if @listing.cover.blank? or !Picture.find_by_id(@listing.cover) %>
+	  </tbody>
 	
-              <a href="<%= listing_path(:id => @listing.id) %>"  id="cover">
-                <img src="/assets/NoImageAvailable.jpg" id="coverimg" alt="">
-              </a>
-			  
-            <% else %>
-			
-              <a href="<%= Picture.find_by_id(@listing.cover).image.url %>" rel="gallery" class="picture"  id="cover">
-                <img src="<%= Picture.find_by_id(@listing.cover).image.thumb.url %>" id="coverimg" alt="">
-              </a>
-			  
-      <% end %>
+		
+	</table>-->
+	  <div id="description" style="background-color: #fee8bd; box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); padding-bottom: 20px; margin-bottom: 20px; border-style: solid; border-color: #ed3d7b; border-width: 4px;float: right; max-width: 50%; padding: 20px;">
+		<h4 style="border-style: solid; border-color: #ed3d7b; border-width: 0px 0px 2px 0px;">Description</h4>
+		<p><%= @listing.addinfo %></p>
+	  </div>
 	</div>
-  </table>
   
-  
-	</div>
+</div>
+
+<div style="margin-left:20%; margin-right: 20%;" class="row">
+  <div class="form-actions">
+    <%= link_to 'Back', listings_path, :class => 'btn'  %>
+    <%= link_to 'Edit', edit_listing_path(@listing), :class => 'btn btn-warning' %>
+    <%= link_to 'Delete', listing_path(@listing), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  </div>
+</div>
+	
+	<div class="row" style="box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); background-color: #ffedca; border-style: solid; border-color: #ed3d7b; border-width: 4px; margin-left: 20%; margin-right: 20%;">
 <% if signed_in? %>
-  <h2>Pictures</h2>
+  <h2 style="margin-left: 20%; margin-right: 20%;">Pictures</h2>
 
 <%= form_for [@listing, @listing.gallery, @gallery.pictures.build], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
   <input type="hidden" id="listing_id" value="<%= @listing.id %>">
-  <div class="row">
+  <div class="row" style="margin-left: 20%;">
     <div class=" fileupload-buttonbar">
       <div class="progressbar fileupload-progressbar nofade"><div style="width:0%;"></div></div>
       <span class="btn btn-primary fileinput-button">
@@ -99,6 +146,7 @@
 
   </div>
 <% end %>
+</div>
 
 <script>
   var fileUploadErrors = {
@@ -137,11 +185,5 @@
   {% } %}
 </script>
 
-<div class="row">
-  <div class="form-actions">
-    <%= link_to 'Back', listings_path, :class => 'btn'  %>
-    <%= link_to 'Edit', edit_listing_path(@listing), :class => 'btn btn-warning' %>
-    <%= link_to 'Delete', listing_path(@listing), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
-  </div>
-</div>
+
 <% end %>

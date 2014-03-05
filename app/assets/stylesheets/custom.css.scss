@@ -12,13 +12,22 @@ $grayMediumLight: #eaeaea;
 }
 
 /* universal */
-
+*{
+	
+}
 html {
   overflow-y: scroll;
 }
 
+.container-fluid{
+	padding-top: 0px;
+	padding-right: 0px;
+	background-color: #c5fef7;
+	color: #ed3d7b;
+}
+
 body {
-  padding-top: 60px;
+  padding-top: 41px;
 }
 
 section {
@@ -37,6 +46,10 @@ textarea {
   margin-bottom: 10px;
 }
 
+a{
+	text-decoration: none;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,15 +63,6 @@ h1 {
   text-align: center;
 }
 
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: #999;
-}
-
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -66,11 +70,36 @@ p {
 
 /* header */
 
+.navbar, .navbar-fixed-top{
+	.navbar-inner{
+		background-color: #feebc6;
+		background-image: none;
+		color: #ed3d7b;
+		text-shadow: 3px 3px #7dcbc2;
+		border-width: 0px 0px 5px 0px;
+		border-color: #ed3d7b;
+		box-shadow: 0 8px 0px rgba(190, 148, 69, 0.5);
+	}
+}
+
+.navbar{ 
+	.nav{ 
+		li{ 
+			a{
+				font-size: 1.5em;
+				color: #ed3d7b;
+				text-shadow: none;
+			}
+			a:hover{
+				color: #00fffc;
+	}	}	}	}
+
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #ed3d7b;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -79,7 +108,7 @@ p {
 }
 
 #logo:hover {
-  color: #fff;
+  color: #00fffc;
   text-decoration: none;
 }
 
@@ -169,7 +198,6 @@ input {
 }
 .col-sm-6{
 	float: left;
-	width: 30%;
 	/*white-space: nowrap;*/
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -182,7 +210,6 @@ input {
 /* Buttons */
 
 .btn{
-    padding: 4px 12px;
 	background-image: none;
 	text-shadow: none;
 	box-shadow: none;
@@ -202,6 +229,7 @@ table{
 		tr{
 			td{
 			  width: 150px;
+			  
 			}
 		}
 	}
@@ -215,12 +243,136 @@ table{
 /* Listings Index */
 
 .span3 {
+	float: left;
 	overflow: hidden;
     white-space: nowrap;
 	text-overflow: ellipsis;
+}
+.col-md-2{
+  .row{
+    a{
+	img{
+		filter: alpha(opacity=100);
+        opacity: 1.0;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        -ms-transition: opacity .15s ease-in-out;
+        -o-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+    }
+	img:hover{
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	}
+   }
+  }
+}
+
+/*.thumbnail{
+	a{
+		img{
+			margin-left: none;
+			margin-right: none;
+			}
+		}
+	}*/
+	
+.thumbnails{
+	margin-left: 20%;
+}
+	
+.row{
+	margin: 0px 0px 0px 0px;
+	h1{
+		text-align: center;
+	}
+}
+
+.row-fluid
+	{
+	
+	h1{
+		text-align: left;
+		margin-left: 80px;
+		margin-bottom: 10px;
+	}
+	.row{
+		.col-md-2{
+			.row{
+				a{
+					img{
+						border-style: solid;
+						border-width: 4px 4px 4px 4px;
+						border-color: #ed3d7b;
+						z-index: 1;
+						}
+					}
+				}
+			}
+		}
+				
+}
+
+#sidebar{
+	margin-top: 10%;
+	vertical-align: center;
+	text-align: center;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	input{
+		background-color: #c5fef7;
+	}
+	label{
+		color: #ed3d7b;
+		letter-spacing: 2px;
+		font-weight: 100;
+		font-size: 1.5em;
+	}
+	.btn-search{
+	background-color: #c5fef7;
+	color: #ed3d7b;
+	}
 	
 }
 
-.thumbnail {
+figure{
 	text-align: center;
+	margin: 0;
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+}
+
+figcaption{
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	bottom: 1px;
+	font-size: 1.2em;
+	color: white;
+	left: 33%;
+	font-weight: bold;
+	text-decoration: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#coverdiv{
+	a{
+		img{
+		filter: alpha(opacity=100);
+        opacity: 1.0;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        -ms-transition: opacity .15s ease-in-out;
+        -o-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+		}
+		img:hover{
+			opacity: 0.5;
+			filter: alpha(opacity=50);
+			}
 	}
+}
