@@ -1,10 +1,10 @@
 
 
 <div class="row" style="clear:both; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;">
-	  <div class="hidden-xs hidden-sm col-md-5 sidebar" id="sidebarcontainer" style="width: 381px; overflow-y: scroll; z-index: 10; box-shadow: 10px 0px 0px rgba(0, 64, 64, 0.5); box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; display: block; margin-left: -20px; float: left; height:100%; position: fixed; background-color: #fee5b5; border-color: #ed3d7b; border-style: solid; border-width: 0px 10px 10px 0px;">
-		<div class="nav nav-sidebar" id="sidebar" style="">
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-" id="sidebarcontainer" style="overflow-y: scroll; z-index: 10; box-shadow: 10px 0px 0px rgba(0, 64, 64, 0.5); box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; display: block; margin-left: -20px; float: left; height:100%; position: fixed; background-color: #fee5b5; border-color: #ed3d7b; border-style: solid; border-width: 0px 10px 10px 0px;">
+		<div class="" id="sidebar" style="">
 			<%= search_form_for @q do |f| %>
-				<h1 style="text-shadow: 5px 5px #a0fff4; color: #ed3d7b;">SEARCH</h3>
+				<h1  style="text-shadow: 5px 5px #a0fff4; color: #ed3d7b;">SEARCH</h3>
 				<%= f.label "Address" %>
 				<%= f.text_field :address_cont_any %>
 				
@@ -48,7 +48,7 @@
 				<%= f.submit "Search", class: "btn btn-large btn-search"  %></br></br></br>
 			<% end %>
 		</div>
-	  </span>
+	  </div>
 <h1 style="text-shadow: 5px 5px #ffd484; width: 80%; margin-left: 371px; margin-top: 3%; letter-spacing: 100px; color: #ed3d7b; font-size: 8em; font-weight: 100; float: left; clear:both;">LISTINGS</h1>
 
 <% if signed_in? %>
