@@ -9,7 +9,7 @@
 	<p><h1 style="border-style: solid; border-color: #ed3d7b; border-width: 0px 0px 8px 0px;"><%= @listing.address %></h1></p>
 	
   
-	<div class="col-md-4" id="coverdiv" style="box-shadow: 10px 10px 0px rgba(0, 64, 64, 0.3); margin-left: 20px; background-color: #fc6b9e; border-style: solid; border-width: 4px 4px 4px 4px; border-color: #26f5fd; box-sizing: border-box; padding: 20px; float: left; max-width: 42%;">
+	<div class="col-md-4" id="coverdiv" style="min-width: 412px; min-height: 309px; box-shadow: 10px 10px 0px rgba(0, 64, 64, 0.3); margin-left: 20px; background-color: #fc6b9e; border-style: solid; border-width: 4px 4px 4px 4px; border-color: #26f5fd; box-sizing: border-box; padding: 20px; float: left; max-width: 42%;">
       <% if @listing.cover.blank? or !Picture.find_by_id(@listing.cover) %>
 	
               <a href="<%= listing_path(:id => @listing.id) %>"  id="cover">
@@ -105,10 +105,12 @@
 	
 		
 	</table>-->
-	  <div id="description" style="background-color: #fee8bd; box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); padding-bottom: 20px; margin-bottom: 20px; border-style: solid; border-color: #ed3d7b; border-width: 4px;float: right; max-width: 50%; padding: 20px;">
+	<% if @listing.addinfo != "" %>
+	  <div id="description" style="margin-right: 10px; background-color: #fee8bd; box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); padding-bottom: 20px; margin-bottom: 20px; border-style: solid; border-color: #ed3d7b; border-width: 4px;float: right; max-width: 50%; padding: 20px;">
 		<h4 style="border-style: solid; border-color: #ed3d7b; border-width: 0px 0px 2px 0px;">Description</h4>
 		<p><%= @listing.addinfo %></p>
 	  </div>
+	<% end %>
 	</div>
   
 </div>
