@@ -117,6 +117,10 @@ p {
   text-decoration: none;
 }
 
+#small-nav{
+	margin-right: 10%;
+}
+
 /* miscellaneous */
 
 .debug_dump {
@@ -382,12 +386,6 @@ img{
 	width: 200px;
 	height: 150px;
 	}
-	
-#kahuna{
-	width: 100%;
-	padding-left: 280px;
-	transition: all 0.4s ease 0s;
-}
 
 #Listings{
 	padding-left: 371px;
@@ -411,11 +409,35 @@ img{
 	transition: all 0.4s ease 0s;
 }
 
+#menu-toggle{
+	float: left;
+	display: inline-block;
+}
+
+#bigdaddy{
+	transition: all 0.4s ease 0s;
+}
+
+#indexbox{
+	transition: all 0.4s ease 0s;
+}
+
+#kahuna{
+	position: relative;
+	padding-left: 280px;
+	transition: all 0.4s ease 0s;
+}
+
+.created{
+	font-size: 12px;
+}
+	
+
 /* SUPER LARGE */
 
 @media (min-width:1602px) {
-	.col-md-6{
-		width: 48%;
+	.indexbox{
+		width: 47%;
 	}
 	#attributes2{
 		margin-left: 20px;
@@ -425,7 +447,7 @@ img{
 /* LARGE */
 
 @media (max-width:1600px) {
-	.col-md-6{
+	.indexbox{
 		width: 100%;
 	}
 }
@@ -434,14 +456,21 @@ img{
 
 @media (max-width:991px) {
 
+	.indexbox{
+		width: 100%;
+	}
+
 	.container-fluid{
 		padding-left: 0px;
 	}
-
-	#kahuna, #Listings{
+	
+	#kahuna{
 		padding-left: 0px;
 	}
-	
+
+	#bigdaddy, #Listings{
+		padding-left: 0px;
+	}
 	#show{
 		min-width: 768px;
 		width: 100%;
@@ -450,6 +479,17 @@ img{
 	#newlisting{
 		padding-left: 10px;
 	}
+	
+	#bigdaddy.active{
+	  position: relative;
+	  left: 277px;
+	}
+
+	#bigdaddy.active #sidebar {
+	  left: 277px;
+	  width: 277px;
+	  transition: all 0.4s ease 0s;
+	}
 
 	#sidebar{
 		left: 0px;
@@ -457,7 +497,7 @@ img{
 	#attributes2{
 		margin-left: 0px;
 	}
-
+	
 	#attributes1, #attributes2{
 		font-size: 1.2em;
 	}
