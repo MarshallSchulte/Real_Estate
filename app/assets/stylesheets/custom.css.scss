@@ -11,15 +11,13 @@ $grayMediumLight: #eaeaea;
   box-sizing: border-box;
 }
 
-
-
 /* universal */
-*
-	
 
 html {
   overflow-y: scroll;
   background-color: #c5fef7;
+  transition: all 0.4s ease 0s;
+  
 }
 
 .container-fluid{
@@ -27,6 +25,7 @@ html {
 	padding-right: 0px;
 	background-color: #c5fef7;
 	color: #ed3d7b;
+	transition: all 0.4s ease 0s;
 }
 
 body {
@@ -79,15 +78,18 @@ p {
 		background-image: none;
 		color: #ed3d7b;
 		text-shadow: 3px 3px #7dcbc2;
+		border-style: solid;
 		border-width: 0px 0px 5px 0px;
 		border-color: #ed3d7b;
 		box-shadow: 0 8px 0px rgba(190, 148, 69, 0.5);
+		transition: all 0.4s ease 0s;
 	}
 }
 
 .navbar{ 
 	.nav{ 
 		li{ 
+			float: left;
 			a{
 				font-size: 1.5em;
 				color: #ed3d7b;
@@ -130,7 +132,7 @@ p {
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid black;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -189,9 +191,9 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid black;
     &:last-child {
-      border-bottom: 1px solid $grayLighter;
+      border-bottom: 1px solid black;
     }
   }
 }
@@ -207,7 +209,7 @@ input {
 }
 
 .timestamp {
-	color: $grayLight;
+	color: black;
 }
 
 /* Buttons */
@@ -269,20 +271,7 @@ table{
 	}
    }
   }
-}
-
-/*.thumbnail{
-	a{
-		img{
-			margin-left: none;
-			margin-right: none;
-			}
-		}
-	}*/
-	
-.thumbnails{
-	margin-left: 20%;
-}
+}	
 	
 .row{
 	margin: 0px 0px 0px 0px;
@@ -293,6 +282,7 @@ table{
 
 .row-fluid
 	{
+	transition: all 0.4s ease 0s;
 	
 	h1{
 		text-align: left;
@@ -317,12 +307,13 @@ table{
 }
 
 #sidebar{
-	margin-top: 10%;
+	margin-left: -277px;
+	left: 277px;
+	min-width: 277px;
 	vertical-align: center;
 	text-align: center;
-	width: 75%;
-	margin-left: auto;
-	margin-right: auto;
+
+	transition: all 0.4s ease 0s;
 	input{
 		background-color: #c5fef7;
 	}
@@ -352,7 +343,7 @@ figcaption{
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.6);
 	position: absolute;
-	bottom: 1px;
+	bottom: 3px;
 	font-size: 1.2em;
 	color: white;
 	left: 33%;
@@ -363,8 +354,10 @@ figcaption{
 }
 
 #coverdiv{
+	background-color: #960A3B;
 	a{
 		img{
+		margin: 0px;
 		filter: alpha(opacity=100);
         opacity: 1.0;
         -webkit-transition: opacity .15s ease-in-out;
@@ -379,3 +372,99 @@ figcaption{
 			}
 	}
 }
+
+img{
+	padding: 0;
+	margin:0;
+	}
+	
+#listingpic{
+	width: 200px;
+	height: 150px;
+	}
+	
+#kahuna{
+	width: 100%;
+	padding-left: 280px;
+	transition: all 0.4s ease 0s;
+}
+
+#Listings{
+	padding-left: 371px;
+	transition: all 0.4s ease 0s;
+}
+
+#newlisting{
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 301px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	transition: all 0.4s ease 0s;
+}
+
+#attributes1, #attributes2{
+	font-size: 1.4em;
+	transition: all 0.4s ease 0s;
+}
+
+/* SUPER LARGE */
+
+@media (min-width:1602px) {
+	.col-md-6{
+		width: 48%;
+	}
+	#attributes2{
+		margin-left: 20px;
+	}
+}
+
+/* LARGE */
+
+@media (max-width:1600px) {
+	.col-md-6{
+		width: 100%;
+	}
+}
+
+/* SMALL */
+
+@media (max-width:991px) {
+
+	.container-fluid{
+		padding-left: 0px;
+	}
+
+	#kahuna, #Listings{
+		padding-left: 0px;
+	}
+	
+	#show{
+		min-width: 768px;
+		width: 100%;
+	}
+	
+	#newlisting{
+		padding-left: 10px;
+	}
+
+	#sidebar{
+		left: 0px;
+	}
+	#attributes2{
+		margin-left: 0px;
+	}
+
+	#attributes1, #attributes2{
+		font-size: 1.2em;
+	}
+}
+
+
+
+	
+	
+	

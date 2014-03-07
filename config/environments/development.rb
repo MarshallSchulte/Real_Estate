@@ -23,6 +23,8 @@ RealEstate::Application.configure do
   config.active_record.migration_error = :page_load
   
   #config.assets.js_compressor = :uglifier
+  
+  config.log_level = :debug
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

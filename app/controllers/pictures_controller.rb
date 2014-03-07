@@ -57,9 +57,11 @@ before_action :signed_in_user, only: [:create, :update, :destroy]
     p_attr = picture_params
     p_attr[:image] = p_attr[:image].first if p_attr[:image].class == Array
     if params[:gallery_id]
-	  Rails.logger.debug("[debug] : #{p_attr[:gallery_id]}" );
+	  Rails.logger.debug("[debug] : hey" );
       @gallery = Gallery.find(params[:gallery_id])
+	  Rails.logger.debug("[debug] : hey2" );
       @picture = @gallery.pictures.build(p_attr)
+	  Rails.logger.debug("[debug] : hey3" );
     else
       @picture = Picture.new(p_attr)
     end
@@ -131,7 +133,7 @@ before_action :signed_in_user, only: [:create, :update, :destroy]
     private
   
 	def picture_params
-		params.fetch(:picture).permit!
+		params.require(:picture).permit!
 	end
   
 end

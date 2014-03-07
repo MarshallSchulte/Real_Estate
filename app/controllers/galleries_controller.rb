@@ -91,6 +91,6 @@ before_action :signed_in_user, only: [:create, :update, :destroy]
   private
   
 	def gallery_params
-		params.fetch(:gallery).permit!
+		params.require(:gallery).permit!
 	end
 end
