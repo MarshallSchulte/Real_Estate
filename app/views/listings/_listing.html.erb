@@ -1,4 +1,4 @@
-	<div class="col-md-6 col-sm-12 col-xs-12 indexbox" style="padding-left: 0px; padding-right: 0px; margin:0px 0px 20px 20px; border-style: solid; border-width: 4px 4px 4px 4px; border-color: #ed3d7b; box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5); background-color: #ffe2a9; float: left;" >
+	<div class="col-md-6 col-sm-12 col-xs-12 indexbox" >
 		<div class="row" id="columnparent">
 		  <div class="col-md-4 col-sm-4 col-xs-4" id="listingpic" style="width 200px; height: auto; padding: 0; border-style: solid; border-width: 0px 4px 4px 0px; border-color: #ed3d7b; ">
             <% if listing.cover.blank? or !Picture.find_by_id(listing.cover) %>
@@ -16,7 +16,7 @@
 			
 		  </div>
 		  
-		  <div class="col-md-8 col-sm-8 col-xs-6 front-content" style="padding: 0; overflow: hidden;">
+		  <div class="col-md-8 col-sm-8 col-xs-7 front-content" style="padding: 0; overflow: hidden;">
 			<div class="row" style="overflow: hidden;">
 				<h3><%= listing.address %></h1>
 			

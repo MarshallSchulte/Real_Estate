@@ -485,6 +485,18 @@ img{
 	font-size: 1.7em;
 }
 
+.indexbox{
+	padding-left: 0px;
+	padding-right: 0px;
+	margin:0px 0px 20px 20px;
+	border-style: solid;
+	border-width: 4px 4px 4px 4px;
+	border-color: #ed3d7b;
+	box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5);
+	background-color: #ffe2a9;
+	float: left;
+}
+
 /*                                 SUPER LARGE                                          */
 
 @media screen and (min-width:1602px) {
@@ -503,6 +515,9 @@ img{
 	#Listings{
 		font-size: 6em;
 		letter-spacing: 70px;
+	}
+	.indexbox{
+		margin-left:0px;
 	}
 }
 
@@ -572,13 +587,23 @@ img{
 		font-size: 3.5em;
 		letter-spacing: 20px;
 	}
+	#listingpic{
+		width: 120px;
+	}
 	
+	figcaption{
+		font-size: 12px;
+	}
 	#logo{
 		font-size: 1.5em;
 	}
 	
 	.column1, .column2{
 		font-size: 11px;
+	}
+	
+	.btn{
+		font-size: 12px;
 	}
 	
 	.front-content{
