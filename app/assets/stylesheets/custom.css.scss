@@ -439,7 +439,10 @@ img{
 
 /* SUPER LARGE */
 
-@media (min-width:1602px) {
+@media screen and (min-width:1602px) {
+	.indexbox{
+		width: 47%;
+	}
 	#attributes2{
 
 	}
@@ -447,7 +450,7 @@ img{
 
 /* LARGE */
 
-@media (max-width:1600px) {
+@media screen and (max-width:1600px) {
 	.indexbox{
 		width: 100%;
 	}
@@ -455,7 +458,7 @@ img{
 
 /* SMALL */
 
-@media (max-width:991px) {
+@media screen and  (max-width:991px) {
 
 	.indexbox{
 		width: 100%;
