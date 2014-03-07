@@ -16,20 +16,20 @@
 			
 		  </div>
 		  
-		  <div class="col-md-8 col-sm-8 col-xs-8" style="padding: 0; overflow: hidden;">
+		  <div class="col-md-8 col-sm-8 col-xs-6 front-content" style="padding: 0; overflow: hidden;">
 			<div class="row" style="overflow: hidden;">
-				<h3 style="border-style: solid; border-width: 0px 0px 8px 0px; border-color: #ed3d7b; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; margin-left 40px; color: #ed3d7b; font-weight: bold;"><%= listing.address %></h1>
+				<h3><%= listing.address %></h1>
 			
 			
 
-		  <div class="col-md-5 col-sm-5 col-xs-5" style="line-height: 1; margin: 10px 0px; color: #ed3d7b; font-weight: 100; font-size: 1.3em; float: left;">
-			<span class="category" style="margin-left: -5%; font-size: 1.2em;"><%= listing.category %></span></br>
-			<span class="price" style="font-size: 1.7em; ">$<%= number_with_delimiter(listing.price) %></span></br>
+		  <div class="col-md-5 col-sm-5 col-xs-5 column1">
+			<span class="category"><%= listing.category %></span></br>
+			<span class="price">$<%= number_with_delimiter(listing.price) %></span></br>
 			<span class="bedrooms"><%= pluralize(listing.beds, "bedroom") %></span></br>
 			<span class="bathrooms"><%= pluralize(listing.bathrooms, "bathroom") %></span>
 		  </div>
 		  
-		  <div class="col-md-7 col-sm-7 col-xs-7" style="line-height: 1; margin-top: 5%; color: #ed3d7b; font-weight: 100; font-size: 1.3em; float: left;">
+		  <div class="col-md-7 col-sm-7 col-xs-7 column2">
 		    <span class="buildingsize"><%= number_with_delimiter(listing.sqft) %> sqft</span></br>
 			<span class="lotsize"><%= number_with_delimiter(listing.lotsize) %> ac.lot</span></br>
 			<span class="yearbuilt">Built in <%= listing.yearbuilt %></span>

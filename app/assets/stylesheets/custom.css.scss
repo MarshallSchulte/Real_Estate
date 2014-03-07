@@ -83,6 +83,7 @@ p {
 		border-color: #ed3d7b;
 		box-shadow: 0 8px 0px rgba(190, 148, 69, 0.5);
 		transition: all 0.4s ease 0s;
+		min-width: 480px;
 	}
 }
 
@@ -107,7 +108,7 @@ p {
   color: #ed3d7b;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 14px;
   font-weight: bold;
   line-height: 1;
 }
@@ -442,9 +443,49 @@ img{
 .thumbnail{
 	border: 0px;
 }
-	
 
-/* SUPER LARGE */
+.column1{
+	line-height: 1;
+	margin: 10px 0px;
+	color: #ed3d7b;
+	font-weight: 100;
+	font-size: 1.3em;
+	float: left;
+}
+
+.column2{
+	line-height: 1;
+	margin-top: 5%;
+	color: #ed3d7b;
+	font-weight: 100;
+	font-size: 1.3em;
+	float: left;
+}
+
+.front-content{
+	h3{
+		border-style: solid;
+		border-width: 0px 0px 8px 0px;
+		border-color: #ed3d7b;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		text-align: center;
+		color: #ed3d7b;
+		font-weight: bold;
+	}
+}
+
+.category{
+	margin-left: -5%;
+	font-size: 1.2em;
+}
+
+.price{
+	font-size: 1.7em;
+}
+
+/*                                 SUPER LARGE                                          */
 
 @media screen and (min-width:1602px) {
 	.indexbox{
@@ -520,6 +561,30 @@ img{
 	
 	#attributes1, #attributes2{
 		font-size: 1.2em;
+	}
+}
+
+/* MEGA SMALL */
+
+@media screen and  (max-width:670px) {
+
+	#Listings{
+		font-size: 3.5em;
+		letter-spacing: 20px;
+	}
+	
+	#logo{
+		font-size: 1.5em;
+	}
+	
+	.column1, .column2{
+		font-size: 11px;
+	}
+	
+	.front-content{
+		h3{
+			font-size: 18px;
+		}
 	}
 }
 
