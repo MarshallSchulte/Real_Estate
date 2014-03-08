@@ -1,0 +1,71 @@
+<div class="row" id="bigdaddy" style="clear:both; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;">
+	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="sidebar" style="transition: all 0.4s ease 0s; overflow-y: scroll; z-index: 10; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; display: block; float: left; height:100%; position: fixed; background-color: #fee5b5; border-color: #ed3d7b; border-style: solid; border-width: 0px 10px 10px 0px;">
+
+			<%= search_form_for @q do |f| %>
+				<h1 style="margin-bottom: 10px; padding-bottom: 10px; text-shadow: 5px 5px #a0fff4; color: #ed3d7b; font-weight: bold;">SEARCH</h3>
+				<%= f.label "Address" %>
+				<%= f.text_field :address_cont_any %>
+				
+				<%= f.label "Price Range:" %>
+				<%= f.label "From" %>
+				<%= f.text_field :price_gteq %>
+				<%= f.label "To" %>
+				<%= f.text_field :price_lteq %>
+				
+				<%= f.label "Number of Bathrooms" %>
+				<%= f.text_field :bathrooms_lteq %>
+				
+				<%= f.label "Number of Bedrooms" %>
+				<%= f.text_field :beds_lteq %>
+				
+				<%= f.label "Year Built" %>
+				<%= f.text_field :yearbuilt_matches %>
+				
+				<%= f.label "Floors" %>
+				<%= f.text_field :floors_eq %>
+				
+				<%= f.label "Basement" %>
+				<%= f.text_field :basement_present %>
+				
+				<%= f.label "Garage" %>
+				<%= f.text_field :garage_present %>
+				
+				<%= f.label "Pool" %>
+				<%= f.text_field :pool_present %>
+				
+				<%= f.label "Central Air Conditioning" %>
+				<%= f.text_field :ac_present %>
+				
+				<%= f.label "County" %>
+				<%= f.text_field :county %>
+				
+				<%= f.label "Subdivision" %>
+				<%= f.text_field :subdivision %>
+				
+				
+				<%= f.submit "Search", class: "btn btn-large btn-search"  %></br></br></br>
+			<% end %>
+
+	  </div>
+<h1 id="Listings">
+	<a id="menu-toggle" href="#" class="btn hidden-lg hidden-md"><i class="glyphicon glyphicon-search hidden-lg hidden-md"></i></a>
+
+LISTINGS</h1>
+
+<% if signed_in? %>
+<%= link_to 'New Listing', new_listing_path, :class => 'btn btn-lg btn-primary', :style => "font-size: 2em; font-weight: bold;", :id => "newlisting" %>
+<% end %>
+	  <div class="row-fluid" id="kahuna">
+
+		<%= render @listings %>
+
+	  </div>
+  
+</div>
+
+<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#bigdaddy").toggleClass("active");
+	});
+</script>

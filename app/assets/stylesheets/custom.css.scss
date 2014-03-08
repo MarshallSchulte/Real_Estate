@@ -246,9 +246,32 @@ table{
 }
 
 #coverdiv{
+	box-shadow: 10px 10px 0px rgba(0, 64, 64, 0.3);
+	background-color: #fc6b9e;
+	border-style: solid;
+	border-width: 4px 4px 4px 4px;
+	border-color: #26f5fd;
+	box-sizing: border-box;
+	padding: 20px;
 	float: left;
 	clear:both;
+	a{
+		img{
+		margin: 0px;
+		filter: alpha(opacity=100);
+        opacity: 1.0;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        -ms-transition: opacity .15s ease-in-out;
+        -o-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+		}
+		img:hover{
+			opacity: 0.5;
+			filter: alpha(opacity=50);
+			}
 	}
+}
 	
 /* Listings Index */
 
@@ -357,27 +380,6 @@ figcaption{
 	margin-left: auto;
 	margin-right: auto;
 }
-
-#coverdiv{
-	background-color: #960A3B;
-	a{
-		img{
-		margin: 0px;
-		filter: alpha(opacity=100);
-        opacity: 1.0;
-        -webkit-transition: opacity .15s ease-in-out;
-        -moz-transition: opacity .15s ease-in-out;
-        -ms-transition: opacity .15s ease-in-out;
-        -o-transition: opacity .15s ease-in-out;
-        transition: opacity .15s ease-in-out;
-		}
-		img:hover{
-			opacity: 0.5;
-			filter: alpha(opacity=50);
-			}
-	}
-}
-
 img{
 	padding: 0;
 	margin:0;
@@ -413,6 +415,14 @@ img{
 }
 
 #attributes1, #attributes2{
+	/*background-color: #fee8bd;*/
+	padding: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	/*border-style: solid;
+	border-color: #ed3d7b;
+	border-width: 4px;*/
+	line-height: 1.3;
 	font-size: 1.4em;
 	transition: all 0.4s ease 0s;
 }
@@ -497,6 +507,36 @@ img{
 	float: left;
 }
 
+.jumbotron{
+	position: relative;
+	left: 280px;
+}
+
+#form{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#show{
+	overflow: hidden;
+	width: 80%;
+	box-shadow: 10px 10px 0px rgba(174, 115, 136, 0.5);
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	background-color: #ffe2a9;
+	border-style: solid;
+	border-color: #ed3d7b;
+	border-width: 4px;
+	margin-left: auto;
+	margin-right: auto;
+	h1{
+	border-style: solid;
+	border-color: #ed3d7b;
+	border-width: 0px 0px 8px 0px;
+	}
+}
+
 /*                                 SUPER LARGE                                          */
 
 @media screen and (min-width:1602px) {
@@ -546,8 +586,16 @@ img{
 		padding-left: 0px;
 	}
 	#show{
-		min-width: 768px;
 		width: 100%;
+		h1{
+			font-size: 2em;
+		}
+		h2{
+			font-size: 20px;
+		}
+		.attributes1, attributes2{
+			
+		}
 	}
 	
 	#newlisting{
@@ -609,6 +657,23 @@ img{
 	.front-content{
 		h3{
 			font-size: 18px;
+		}
+	}
+	
+	#show{
+		width: 100%;
+		h1{
+			font-size: 2em;
+		}
+		h2{
+			font-size: 20px;
+		}
+		#attributes1, #attributes2{
+			font-size: 1.1em;
+			margin-bottom: 0px;
+		}
+		#coverdiv{
+			padding: 5px;
 		}
 	}
 }

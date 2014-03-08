@@ -1,6 +1,16 @@
 class ListingsController < ApplicationController
 before_action :signed_in_user, only: [:create, :update, :destroy]
 
+def home
+	@q = Listing.search(params[:q])
+    @listings = @q.result(distinct: true)
+	Rails.logger.debug("[debug] : Homey" );
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @listings }
+    end
+end
+
 def index
 	@q = Listing.search(params[:q])
     @listings = @q.result(distinct: true)
