@@ -12,7 +12,6 @@ gem 'fancybox-rails'
 gem "jquery-fileupload-rails"
 gem 'blueimp-gallery-rails'
 gem 'bootstrap-glyphicons'
-gem 'fog'
 gem 'thin'
 gem 'jquery-ui-rails'
 gem 'geocoder'
