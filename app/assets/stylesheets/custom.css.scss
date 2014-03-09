@@ -83,7 +83,6 @@ p {
 		border-color: #ed3d7b;
 		box-shadow: 0 8px 0px rgba(190, 148, 69, 0.5);
 		transition: all 0.4s ease 0s;
-		min-width: 480px;
 	}
 }
 
@@ -643,8 +642,12 @@ img{
 		font-size: 12px;
 	}
 	#logo{
-		font-size: 1.5em;
+		font-size: 1em;
 	}
+	.navbar .nav li a {
+		font-size: 1em;
+	}
+	
 	
 	.column1, .column2{
 		font-size: 11px;
@@ -669,8 +672,9 @@ img{
 			font-size: 20px;
 		}
 		#attributes1, #attributes2{
-			font-size: 1.1em;
+			font-size: 10px;
 			margin-bottom: 0px;
+			padding: 0px;
 		}
 		#coverdiv{
 			padding: 5px;
